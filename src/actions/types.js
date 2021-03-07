@@ -1,0 +1,6 @@
+export const CREATE_LINK = 'CREATE_LINK';
+
+export const UPDATE_NAME_FIELD = 'UPDATE_NAME_FIELD';
+export const UPDATE_URL_FIELD = 'UPDATE_URL_FIELD';
+export const VALIDATE_NAME = 'VALIDATE_NAME';
+export const VALIDATE_URL = 'VALIDATE_URL';

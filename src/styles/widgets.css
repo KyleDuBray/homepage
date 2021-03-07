@@ -1,0 +1,43 @@
+.widgets-container {
+  background-color: rgba(189, 189, 189, 0.381);
+  width: 75vw;
+  height: 75vh;
+  margin: 0 auto auto auto;
+  box-shadow: 0px 5px 10px rgb(71, 71, 71);
+}
+
+.links-container {
+  background: linear-gradient(#e6646439, #9198e587);
+  height: 46.4px;
+  display: flex;
+  align-items: center;
+}
+
+.links-container * {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+}
+
+.hidden-vert-scroll {
+  overflow-x: scroll; /* Add the ability to scroll */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hidden-vert-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hidden-vert-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+a[href^='http'] {
+  padding-left: 19px;
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
