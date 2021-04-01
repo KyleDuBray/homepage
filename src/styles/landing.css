@@ -4,7 +4,7 @@
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  background-image: linear-gradient(to top, #000000b4, #ffffff00),
+  background-image: linear-gradient(to top, #fffdfd00, #ffffffc2),
     url('/src/img/background.jpg');
   display: flex;
   flex-direction: column;
@@ -30,5 +30,5 @@
 .main-text h1 {
   font-weight: 200;
   font-size: 6rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(0, 0, 0, 0.85);
 }

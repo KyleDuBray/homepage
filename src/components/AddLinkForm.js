@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   createLink,
   updateName,
   updateUrl,
-  validateName,
-  validateUrl,
+  createNameError,
+  createUrlError,
+  clearNameError,
+  clearUrlError,
+  clearAllErrors,
 } from '../actions';
 
 import '../styles/form.css';
@@ -15,30 +18,19 @@ import Button from './Button';
 
 export default function AddLinkForm(props) {
   const dispatch = useDispatch();
+
+  const siteName = useSelector((state) => state.form.siteName);
+  const url = useSelector((state) => state.form.url);
   const errors = useSelector((state) => state.form.errors);
-
-  const [name, setName] = useState('');
-  const [url, setUrl] = useState('');
-
-  useEffect(() => {
-    validateName();
-    validateUrl();
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    validateFields();
     if (errors.length === 0) {
-      dispatch(createLink({ url, siteName: name }));
+      dispatch(createLink({ url, siteName }));
       closeForm();
     } else {
       displayErrors();
     }
-  };
-
-  const validateFields = () => {
-    dispatch(validateName(name));
-    dispatch(validateUrl(url));
   };
 
   const displayErrors = () => {
@@ -48,31 +40,70 @@ export default function AddLinkForm(props) {
   };
 
   const closeForm = () => {
+    dispatch(clearAllErrors());
     props.handleCancel();
   };
 
+  // ONCHANGE HANDLERS
   const onNameChange = (e) => {
-    setName(e.target.value);
-    dispatch(validateName(name));
+    dispatch(updateName(e.target.value));
+    validateSiteName(e.target.value);
   };
 
   const onUrlChange = (e) => {
-    setUrl(e.target.value);
-    dispatch(validateUrl(url));
+    dispatch(updateUrl(e.target.value));
+    validateUrl(e.target.value);
   };
+
+  // VALIDATION
+  const validateSiteName = useCallback(
+    (name) => {
+      if (!name) {
+        console.log('there is no name');
+        dispatch(createNameError());
+      } else dispatch(clearNameError());
+    },
+    [dispatch]
+  );
+
+  const validateUrl = useCallback(
+    (url) => {
+      if (!url) {
+        console.log('there is no url');
+        dispatch(createUrlError());
+      } else dispatch(clearUrlError());
+    },
+    [dispatch]
+  );
+
+  useEffect(() => {
+    validateSiteName(siteName);
+  }, [siteName, validateSiteName]);
+
+  useEffect(() => {
+    validateUrl(url);
+  }, [url, validateUrl]);
 
   return (
     <form>
       <label>Name:</label>
-      <input type="text" value={name} onChange={onNameChange} />
+      <input type="text" value={siteName} onChange={onNameChange} />
       <br />
       <label>URL:</label>
       <input type="text" value={url} onChange={onUrlChange} />
       <br />
 
-      <Button content={'Add'} handleClick={handleSubmit} />
+      <Button
+        content={'Add'}
+        handleClick={handleSubmit}
+        innerClass="button-content"
+      />
 
-      <Button handleClick={closeForm} content="Cancel" />
+      <Button
+        handleClick={closeForm}
+        content="Cancel"
+        innerClass="button-content"
+      />
     </form>
   );
 }

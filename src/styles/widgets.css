@@ -8,8 +8,9 @@
 
 .links-container {
   background: linear-gradient(#e6646439, #9198e587);
-  height: 46.4px;
+  /* height: 46.4px; */
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -20,14 +21,15 @@
   font-size: 2rem;
 }
 
-.hidden-vert-scroll {
-  overflow-x: scroll; /* Add the ability to scroll */
+/*Use this for hidden scroll functionality- scrapped to just use flex-wrap*/
+/* .hidden-vert-scroll {
+  overflow-x: scroll; /* Add the ability to scroll 
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
+/* Hide scrollbar for Chrome, Safari and Opera 
 .hidden-vert-scroll::-webkit-scrollbar {
-  display: none;
-}
+  display: none; 
+} */
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .hidden-vert-scroll {

@@ -1,53 +1,73 @@
 import {
-  UPDATE_NAME_FIELD,
+  UPDATE_SITENAME_FIELD,
   UPDATE_URL_FIELD,
-  VALIDATE_NAME,
-  VALIDATE_URL,
+  SITENAME_ERROR,
+  URL_ERROR,
+  CLEAR_SITENAME_ERROR,
+  CLEAR_URL_ERROR,
+  CLEAR_ALL_ERRORS,
 } from '../actions/types';
 
 const INITIAL_STATE = {
   fields: { siteName: '', url: '' },
   errors: [],
 };
+
+const INVALID_SITENAME = 'INVALID_SITENAME';
+const INVALID_URL = 'INVALID_URL';
+
 const formReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case UPDATE_NAME_FIELD:
+    case UPDATE_SITENAME_FIELD:
       return {
         ...state,
-        fields: { name: action.payload.siteName },
+        fields: { ...state.fields, siteName: action.payload.siteName },
       };
 
     case UPDATE_URL_FIELD:
       return {
         ...state,
-        fields: { url: action.payload.url },
+        fields: { ...state.fields, url: action.payload.url },
       };
 
-    case VALIDATE_NAME:
-      if (action.payload.name === '') {
-        return {
-          ...state,
-          form: {
-            errors: [
-              {
-                msg: 'You must provide a valid site name',
-                type: 'INVALID_NAME',
-              },
-            ],
+    case SITENAME_ERROR:
+      return {
+        ...state,
+        errors: [
+          ...state.errors,
+          {
+            msg: 'You must provide a valid site name',
+            type: INVALID_SITENAME,
           },
-        };
-      } else return state;
-    case VALIDATE_URL:
-      if (action.payload.url === '') {
-        return {
-          ...state,
-          form: {
-            errors: [
-              { msg: 'You must provide a valid url', type: 'INVALID_URL' },
-            ],
-          },
-        };
-      } else return state;
+        ],
+      };
+    case URL_ERROR:
+      return {
+        ...state,
+        errors: [
+          ...state.errors,
+          { msg: 'You must provide a valid url', type: INVALID_URL },
+        ],
+      };
+    case CLEAR_SITENAME_ERROR:
+      const newErrors = state.errors.filter(
+        (err) => err.type !== INVALID_SITENAME
+      );
+      return {
+        ...state,
+        errors: newErrors,
+      };
+    case CLEAR_URL_ERROR:
+      const newErrs = state.errors.filter((err) => err.type !== INVALID_URL);
+      return {
+        ...state,
+        errors: newErrs,
+      };
+    case CLEAR_ALL_ERRORS:
+      return {
+        ...state,
+        errors: [],
+      };
 
     default:
       return state;

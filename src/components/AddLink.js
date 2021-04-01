@@ -14,7 +14,12 @@ const AddLink = () => {
 
   return (
     <>
-      <Button handleClick={toggle} content={'+ New'} class="addlink" />
+      <Button
+        handleClick={toggle}
+        content={'+ New'}
+        outerClass="addlink"
+        innerClass="add-span"
+      />
       <AddLinkModal />
     </>
   );

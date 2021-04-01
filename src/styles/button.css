@@ -26,23 +26,17 @@ Focus styles via keyboard using
 *************************** */
 
 /* Fixing the Safari bug for `<button>`s overflow */
-.button-content {
+.fix-focus {
   position: relative;
 }
 
-:focus > .button-content {
-  box-shadow: 0 0 3px 7px lime;
-  outline: none;
-}
-
 /* Removing the focus ring styles specifically for button in Firefox */
-button:not(:-moz-focusring):focus > .button-content {
+button:not(:-moz-focusring):focus > .fix-focus {
   box-shadow: none;
 }
 
 /* Removing default outline only after we've added our custom one */
-.addlink:focus,
-.button-content:focus {
+.fix-focus:focus {
   outline: none;
 }
 
@@ -54,7 +48,7 @@ Add Link Button
   margin: 0 10px;
 }
 .addlink,
-.button-content {
+.add-span {
   border: 0;
   border-radius: 0.25rem;
   background: #80ff937b;
@@ -64,7 +58,7 @@ Add Link Button
   width: 80px;
 }
 
-.addlink .button-content {
+.addlink .add-span {
   padding: 2px;
 }
 
@@ -80,6 +74,45 @@ Add Link Button
   transform: translateY(1px);
 }
 
-.addlink .button-content:focus {
+.addlink .add-span:focus {
   text-decoration: none;
+}
+
+:focus > .add-span {
+  box-shadow: 0 0 3px 7px lime;
+  outline: none;
+}
+
+.addlink:focus {
+  outline: none;
+}
+
+/**************************
+Delete Link Button
+*************************** */
+
+.deletelink,
+.delete-span {
+  border: 0;
+  border-radius: 0.25rem;
+  background: none;
+  cursor: pointer;
+  height: 20px;
+}
+
+.deletelink {
+  margin: auto 0;
+}
+
+/**************************
+Toggle DeleteLink Button
+*************************** */
+
+.toggledelete,
+.toggledelete-span {
+  border: 0;
+  border-radius: 0.25rem;
+  background: none;
+  cursor: pointer;
+  height: 20px;
 }
