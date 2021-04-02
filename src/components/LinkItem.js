@@ -12,6 +12,9 @@ const LinkItem = ({ url, siteName }) => {
   const faviconStyle = `url(https://www.google.com/s2/favicons?domain=${url})`;
   const deleteOpen = useDeleteLink();
 
+  // TODO: Add delete link functionality (redux action done, just need to be able
+  // to dispatch)
+
   const renderDeleteButtons = () => {
     if (deleteOpen) {
       return (
@@ -20,6 +23,7 @@ const LinkItem = ({ url, siteName }) => {
             content={<ion-icon name="close-circle-outline"></ion-icon>}
             innerClass="delete-span"
             outerClass="deletelink"
+            handleClick={() => console.log('delete attempt')}
           />
           <div style={linkStyle}>{siteName}</div>
         </>

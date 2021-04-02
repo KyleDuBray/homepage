@@ -1,4 +1,5 @@
 export const CREATE_LINK = 'CREATE_LINK';
+export const DELETE_LINK = 'DELETE_LINK';
 
 export const UPDATE_SITENAME_FIELD = 'UPDATE_SITENAME_FIELD';
 export const UPDATE_URL_FIELD = 'UPDATE_URL_FIELD';

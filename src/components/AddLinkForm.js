@@ -19,13 +19,15 @@ import Button from './Button';
 export default function AddLinkForm(props) {
   const dispatch = useDispatch();
 
-  const siteName = useSelector((state) => state.form.siteName);
-  const url = useSelector((state) => state.form.url);
+  const siteName = useSelector((state) => state.form.fields.siteName);
+  const url = useSelector((state) => state.form.fields.url);
   const errors = useSelector((state) => state.form.errors);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (errors.length === 0) {
+      console.log(`form values ${url}, ${siteName}`);
+
       dispatch(createLink({ url, siteName }));
       closeForm();
     } else {

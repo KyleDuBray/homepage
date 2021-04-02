@@ -1,5 +1,6 @@
 import {
   CREATE_LINK,
+  DELETE_LINK,
   UPDATE_SITENAME_FIELD,
   UPDATE_URL_FIELD,
   SITENAME_ERROR,
@@ -11,7 +12,13 @@ import {
 
 export const createLink = (formValues) => {
   const { url, siteName } = formValues;
+  console.log(`form values ${url}, ${siteName}`);
+
   return { type: CREATE_LINK, payload: { url, siteName } };
+};
+
+export const deleteLink = (siteName) => {
+  return { type: DELETE_LINK, payload: siteName };
 };
 
 export const updateName = (siteName) => {
