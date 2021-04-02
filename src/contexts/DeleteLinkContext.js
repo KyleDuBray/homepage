@@ -10,7 +10,6 @@ export const DeleteLinkProvider = ({ children }) => {
   const [deleteOpen, setDeleteOpen] = useState(false);
 
   const toggleDeleteLink = () => {
-    console.log('delete was toggled');
     setDeleteOpen(!deleteOpen);
   };
 

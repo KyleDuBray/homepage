@@ -35,7 +35,7 @@ export default function AddLinkForm(props) {
 
   const displayErrors = () => {
     errors.forEach((err) => {
-      console.log(err.type);
+      console.error(err.type);
     });
   };
 
@@ -59,7 +59,6 @@ export default function AddLinkForm(props) {
   const validateSiteName = useCallback(
     (name) => {
       if (!name) {
-        console.log('there is no name');
         dispatch(createNameError());
       } else dispatch(clearNameError());
     },
@@ -69,7 +68,6 @@ export default function AddLinkForm(props) {
   const validateUrl = useCallback(
     (url) => {
       if (!url) {
-        console.log('there is no url');
         dispatch(createUrlError());
       } else dispatch(clearUrlError());
     },

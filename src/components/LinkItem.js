@@ -11,7 +11,6 @@ const linkStyle = {
 const LinkItem = ({ url, siteName }) => {
   const faviconStyle = `url(https://www.google.com/s2/favicons?domain=${url})`;
   const deleteOpen = useDeleteLink();
-  console.log(deleteOpen);
 
   const renderDeleteButtons = () => {
     if (deleteOpen) {
