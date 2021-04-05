@@ -12,8 +12,6 @@ import {
 
 export const createLink = (formValues) => {
   const { url, siteName } = formValues;
-  console.log(`form values ${url}, ${siteName}`);
-
   return { type: CREATE_LINK, payload: { url, siteName } };
 };
 

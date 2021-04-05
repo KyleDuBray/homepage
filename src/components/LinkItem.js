@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from './Button';
 import { useDeleteLink } from '../contexts/DeleteLinkContext';
+import { useDispatch } from 'react-redux';
+import { deleteLink } from '../actions/index';
 
 const linkStyle = {
   margin: '10px 10px 10px 2px',
@@ -11,9 +13,11 @@ const linkStyle = {
 const LinkItem = ({ url, siteName }) => {
   const faviconStyle = `url(https://www.google.com/s2/favicons?domain=${url})`;
   const deleteOpen = useDeleteLink();
+  const dispatch = useDispatch();
 
-  // TODO: Add delete link functionality (redux action done, just need to be able
-  // to dispatch)
+  const removeLink = () => {
+    dispatch(deleteLink(siteName));
+  };
 
   const renderDeleteButtons = () => {
     if (deleteOpen) {
@@ -23,7 +27,7 @@ const LinkItem = ({ url, siteName }) => {
             content={<ion-icon name="close-circle-outline"></ion-icon>}
             innerClass="delete-span"
             outerClass="deletelink"
-            handleClick={() => console.log('delete attempt')}
+            handleClick={removeLink}
           />
           <div style={linkStyle}>{siteName}</div>
         </>

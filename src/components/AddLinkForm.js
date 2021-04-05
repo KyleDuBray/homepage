@@ -26,8 +26,6 @@ export default function AddLinkForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (errors.length === 0) {
-      console.log(`form values ${url}, ${siteName}`);
-
       dispatch(createLink({ url, siteName }));
       closeForm();
     } else {
@@ -85,25 +83,36 @@ export default function AddLinkForm(props) {
   }, [url, validateUrl]);
 
   return (
-    <form>
-      <label>Name:</label>
-      <input type="text" value={siteName} onChange={onNameChange} />
-      <br />
-      <label>URL:</label>
-      <input type="text" value={url} onChange={onUrlChange} />
-      <br />
+    <form className="form-addlink">
+      <div className="form-addlink--content">
+        <div className="form-addlink--head">
+          <h1>Add New Link</h1>
+        </div>
 
-      <Button
-        content={'Add'}
-        handleClick={handleSubmit}
-        innerClass="button-content"
-      />
+        <div className="form-addlink--fields">
+          <div className="field">
+            <label>Name</label>
+            <input type="text" value={siteName} onChange={onNameChange} />
+          </div>
+          <div className="field">
+            <label>URL</label>
+            <input type="text" value={url} onChange={onUrlChange} />
+          </div>
+        </div>
+        <Button
+          content={'Add'}
+          handleClick={handleSubmit}
+          innerClass="form-addlink-add-span"
+          outerClass="form-addlink-add-btn"
+        />
 
-      <Button
-        handleClick={closeForm}
-        content="Cancel"
-        innerClass="button-content"
-      />
+        <Button
+          handleClick={closeForm}
+          content="Cancel"
+          innerClass="form-addlink-cancel-span"
+          outerClass="form-addlink-cancel-btn"
+        />
+      </div>
     </form>
   );
 }
