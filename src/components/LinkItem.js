@@ -53,7 +53,7 @@ const LinkItem = ({ url, siteName }) => {
   return (
     <>
       {renderDeleteButtons()}
-      <div>{renderFavicons()}</div>
+      <div className="link-item">{renderFavicons()}</div>
     </>
   );
 };

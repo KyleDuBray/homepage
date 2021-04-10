@@ -6,6 +6,10 @@
   box-shadow: 0px 5px 10px rgb(71, 71, 71);
 }
 
+/**************************
+Links
+*************************** */
+
 .links-container {
   background: linear-gradient(#e6646439, #9198e587);
   /* height: 46.4px; */
@@ -19,6 +23,14 @@
   text-decoration: none;
   color: black;
   font-size: 2rem;
+}
+
+.link-item {
+  transition: all 0.25s;
+}
+
+.link-item:hover {
+  background-color: rgba(0, 0, 0, 0.151);
 }
 
 /*Use this for hidden scroll functionality- scrapped to just use flex-wrap*/

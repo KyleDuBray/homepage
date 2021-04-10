@@ -13,7 +13,7 @@ const Links = () => {
   const state = useSelector((state) => state.links);
 
   const renderLinks = () => {
-    return state.linkslist.map((link, i) => {
+    return state.linksList.map((link, i) => {
       return <LinkItem key={i} url={link.url} siteName={link.siteName} />;
     });
   };
