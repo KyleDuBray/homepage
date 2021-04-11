@@ -2,8 +2,10 @@ import {
   UPDATE_SITENAME_FIELD,
   UPDATE_URL_FIELD,
   SITENAME_ERROR,
+  SITENAME_EXISTS_ERROR,
   URL_ERROR,
   CLEAR_SITENAME_ERROR,
+  CLEAR_SITENAME_EXISTS_ERROR,
   CLEAR_URL_ERROR,
   CLEAR_ALL_ERRORS,
 } from '../actions/types';
@@ -13,7 +15,9 @@ const INITIAL_STATE = {
   errors: [],
 };
 
+// ERROR TYPES (different than redux action types)
 const INVALID_SITENAME = 'INVALID_SITENAME';
+const SITENAME_ALREADY_EXISTS = 'SITENAME_ALREADY_EXISTS';
 const INVALID_URL = 'INVALID_URL';
 
 const formReducer = (state = INITIAL_STATE, action) => {
@@ -41,6 +45,17 @@ const formReducer = (state = INITIAL_STATE, action) => {
           },
         ],
       };
+    case SITENAME_EXISTS_ERROR:
+      return {
+        ...state,
+        errors: [
+          ...state.errors,
+          {
+            msg: 'Site name already exists.',
+            type: SITENAME_ALREADY_EXISTS,
+          },
+        ],
+      };
     case URL_ERROR:
       return {
         ...state,
@@ -56,6 +71,14 @@ const formReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         errors: newErrors,
+      };
+    case CLEAR_SITENAME_EXISTS_ERROR:
+      const newError = state.errors.filter(
+        (err) => err.type !== SITENAME_ALREADY_EXISTS
+      );
+      return {
+        ...state,
+        errors: newError,
       };
     case CLEAR_URL_ERROR:
       const newErrs = state.errors.filter((err) => err.type !== INVALID_URL);

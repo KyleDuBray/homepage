@@ -1,22 +1,13 @@
 import { CREATE_LINK, DELETE_LINK } from '../actions/types';
 
 const linksFromLocalStorage = () => {
-  const links = localStorage.getItem('links');
-
-  if (links === '[object Object]' || !links) {
+  const links = JSON.parse(localStorage.getItem('links'));
+  if (links.linksList.length === 0 || !links) {
     const state = {
       linksList: [
         {
           url: 'https://github.com',
           siteName: 'GitHub',
-        },
-        {
-          url: 'https://css-tricks.com',
-          siteName: 'CSS Tricks',
-        },
-        {
-          url: 'https://codepen.io',
-          siteName: 'CodePen',
         },
       ],
     };
@@ -24,8 +15,7 @@ const linksFromLocalStorage = () => {
     return state;
   }
 
-  const state = JSON.parse(links);
-  return state;
+  return links;
 };
 const INITIAL_STATE = linksFromLocalStorage();
 

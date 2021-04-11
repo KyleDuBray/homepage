@@ -34,7 +34,7 @@ const App = () => {
       >
         <Logo className="logo" />
         <div className="main-text">
-          <h1>Good morning, Kyle.</h1>
+          <h1>Good morning.</h1>
           <Weather />
         </div>
         <div className="widgets-container">

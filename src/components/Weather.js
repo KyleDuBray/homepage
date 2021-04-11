@@ -1,20 +1,26 @@
 import React from 'react';
 import '../styles/weather.css';
 
+const weatherStyles = {
+  sunny: 'sunny-outline',
+  sunnyPartly: 'partly-sunny-outline',
+  cloudy: 'cloudy-outline',
+  rainy: 'rainy-outline',
+  storm: 'thunderstorm-outline',
+  night: 'moon-outline',
+  nightCloudy: 'cloudy-night-outline',
+  snow: 'snow-outline',
+};
+
 const Weather = () => {
   return (
     <div className="weather-container">
-      <h4>Nashville,TN</h4>
+      <div className="weather-city">
+        <h4>Nashville,TN</h4>
+      </div>
       <div className="weather-reporter">
-        <ion-icon name="sunny-outline"></ion-icon>
-        <ion-icon name="rainy-outline"></ion-icon>
-        <ion-icon name="thunderstorm-outline"></ion-icon>
-        <ion-icon name="cloudy-night-outline"></ion-icon>
-        <ion-icon name="cloudy-outline"></ion-icon>
-        <ion-icon name="partly-sunny-outline"></ion-icon>
-        <ion-icon name="moon-outline"></ion-icon>
-        <ion-icon name="snow-outline"></ion-icon>
-        <div className="temp-container"> 70&#176;F</div>
+        <ion-icon name={weatherStyles.sunny}></ion-icon>
+        <h4> 70&#176;F</h4>
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
 import '../styles/button.css';
 
@@ -8,8 +7,6 @@ import AddLinkModal from './AddLinkModal';
 import Button from './Button';
 
 const AddLink = () => {
-  const dispatch = useDispatch();
-
   const toggle = useToggleModal();
 
   return (

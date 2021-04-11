@@ -5,10 +5,12 @@ import {
   updateName,
   updateUrl,
   createNameError,
+  createNameExistsError,
   createUrlError,
   clearNameError,
   clearUrlError,
   clearAllErrors,
+  clearNameExistsError,
 } from '../actions';
 
 import '../styles/form.css';
@@ -22,6 +24,7 @@ export default function AddLinkForm(props) {
   const siteName = useSelector((state) => state.form.fields.siteName);
   const url = useSelector((state) => state.form.fields.url);
   const errors = useSelector((state) => state.form.errors);
+  const currentLinks = useSelector((state) => state.links.linksList);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,22 +50,31 @@ export default function AddLinkForm(props) {
   // ONCHANGE HANDLERS
   const onNameChange = (e) => {
     dispatch(updateName(e.target.value));
-    validateSiteName(e.target.value);
   };
 
   const onUrlChange = (e) => {
     dispatch(updateUrl(e.target.value));
-    validateUrl(e.target.value);
   };
 
   // VALIDATION
   const validateSiteName = useCallback(
     (name) => {
+      const linkNames = [];
+      currentLinks.forEach((link) => {
+        linkNames.push(link.siteName.toLowerCase());
+      });
       if (!name) {
         dispatch(createNameError());
-      } else dispatch(clearNameError());
+        dispatch(clearNameExistsError());
+      } else if (linkNames.includes(name.toLowerCase())) {
+        dispatch(createNameExistsError());
+        dispatch(clearNameError());
+      } else {
+        dispatch(clearNameError());
+        dispatch(clearNameExistsError());
+      }
     },
-    [dispatch]
+    [dispatch, currentLinks]
   );
 
   const validateUrl = useCallback(
