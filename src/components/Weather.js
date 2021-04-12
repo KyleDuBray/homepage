@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import weather from '../apis/weather';
 import '../styles/weather.css';
 
 const weatherStyles = {
@@ -12,7 +13,21 @@ const weatherStyles = {
   snow: 'snow-outline',
 };
 
+const { REACT_APP_WEATHER_KEY } = process.env;
+
 const Weather = () => {
+  const [fetchedWeather, setFetchedWeather] = useState({});
+  useEffect(() => {
+    const getWeather = async () => {
+      const response = await weather.get(
+        `/data/2.5/weather?q=Nashville&appid=${REACT_APP_WEATHER_KEY}`
+      );
+      setFetchedWeather(response.data);
+      console.log(response.data);
+    };
+    getWeather();
+  }, []);
+
   return (
     <div className="weather-container">
       <div className="weather-city">
