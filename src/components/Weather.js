@@ -17,15 +17,43 @@ const { REACT_APP_WEATHER_KEY } = process.env;
 
 const Weather = () => {
   const [fetchedWeather, setFetchedWeather] = useState({});
+  const [fetchedCoords, setFetchedCoords] = useState('none');
   useEffect(() => {
+    const getUserLocation = async () => {
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position);
+        const { latitude, longitude } = position.coords;
+        setFetchedCoords({ latitude, longitude });
+      });
+    };
+
+    // lat=${coords.latitude}*long=${coords.longitude}
+    //TODO: Make promise work correctly- need to fetch user data and then
+    // extract coordinates from that to look up weather, then wire to Redux.
+
     const getWeather = async () => {
-      const response = await weather.get(
-        `/data/2.5/weather?q=Nashville&appid=${REACT_APP_WEATHER_KEY}`
-      );
+      console.log(fetchedCoords);
+      let response;
+      if (fetchedCoords === 'none') {
+        response = 'none';
+      } else {
+        response = await weather.get(
+          `/data/2.5/weather?lat=${fetchedCoords.latitude}&lon=${fetchedCoords.longitude}&appid=${REACT_APP_WEATHER_KEY}`
+        );
+      }
+
       setFetchedWeather(response.data);
       console.log(response.data);
     };
-    getWeather();
+
+    getUserLocation().then(
+      () => {
+        getWeather(fetchedCoords);
+      },
+      () => {
+        console.error('Weather request failed');
+      }
+    );
   }, []);
 
   return (
