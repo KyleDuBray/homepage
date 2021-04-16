@@ -2,7 +2,7 @@ import { CREATE_LINK, DELETE_LINK } from '../actions/types';
 
 const linksFromLocalStorage = () => {
   const links = JSON.parse(localStorage.getItem('links'));
-  if (links.linksList.length === 0 || !links) {
+  if (!links || links.linksList.length === 0) {
     const state = {
       linksList: [
         {
