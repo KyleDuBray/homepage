@@ -15,13 +15,16 @@ const weatherStyles = {
 
 const { REACT_APP_WEATHER_KEY } = process.env;
 
+// (0K − 273.15) × 9/5 + 32 = -459.7°F
+const kelvinTofahrenheit = (k) => (k-273.15) *(9/5) +32;
+
 const Weather = () => {
-  const [fetchedWeather, setFetchedWeather] = useState({});
+  const [fetchedWeather, setFetchedWeather] = useState('');
   const [fetchedCoords, setFetchedCoords] = useState('none');
 
   useEffect(() => {
     const getUserLocation = async () => {
-      navigator.geolocation.getCurrentPosition((position) => {
+      await navigator.geolocation.getCurrentPosition((position) => {
         console.log(position);
         const { latitude, longitude } = position.coords;
         setFetchedCoords({ latitude, longitude });
@@ -42,25 +45,27 @@ const Weather = () => {
         response = 'none';
       } else {
         response = await weather.get(
-          `/data/2.5/weather?lat=${fetchedCoords.latitude}&lon=${fetchedCoords.longitude}&appid=${REACT_APP_WEATHER_KEY}`
+          `/data/2.5/weather?lat=${fetchedCoords.latitude}&lon=${fetchedCoords.longitude}&units=imperial&appid=${REACT_APP_WEATHER_KEY}`
         );
       }
 
       setFetchedWeather(response.data);
-      console.log(response.data);
+      console.log(response.data)
     };
 
     getWeather();
   }, [fetchedCoords]);
 
+  
+
   return (
     <div className="weather-container">
       <div className="weather-city">
-        <h4>Nashville,TN</h4>
+        <h4>{fetchedWeather === '' ? 'Loading...' :fetchedWeather?.name}</h4>
       </div>
       <div className="weather-reporter">
         <ion-icon name={weatherStyles.sunny}></ion-icon>
-        <h4> 70&#176;F</h4>
+        <h4> {Math.round(parseInt(fetchedWeather?.main?.temp))}&#176;F</h4>
       </div>
     </div>
   );
