@@ -10,7 +10,13 @@ import {
   CLEAR_SITENAME_EXISTS_ERROR,
   CLEAR_URL_ERROR,
   CLEAR_ALL_ERRORS,
+  FETCH_LOCATION,
+  FETCH_WEATHER
 } from './types';
+
+import weather from '../apis/weather';
+
+const { REACT_APP_WEATHER_KEY } = process.env;
 
 export const createLink = (formValues) => {
   const { url, siteName } = formValues;
@@ -56,3 +62,30 @@ export const clearUrlError = () => {
 export const clearAllErrors = () => {
   return { type: CLEAR_ALL_ERRORS };
 };
+
+export const fetchLocation = () => async dispatch => {
+  let response;
+  await navigator.geolocation.getCurrentPosition( (position) => {
+    const { latitude, longitude } = position.coords;
+    response = { latitude, longitude };
+    dispatch({type: FETCH_LOCATION, payload: response})
+    dispatch(fetchWeather());
+  });
+
+  
+}
+
+export const fetchWeather = () => async (dispatch, getState) => {
+
+  const {latitude, longitude} = getState().weather.location.coords;
+
+  let response = {};
+  if (latitude) {
+    response = await weather.get(
+      `/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${REACT_APP_WEATHER_KEY}`
+    )
+  } else response.data = {}
+  
+
+  dispatch({type: FETCH_WEATHER, payload: response.data})
+}

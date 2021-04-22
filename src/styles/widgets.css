@@ -54,4 +54,6 @@ a[href^='http'] {
   background-size: 16px 16px;
   background-repeat: no-repeat;
   background-position: left center;
+  height: 44px;
+  line-height: 44px;
 }

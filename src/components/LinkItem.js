@@ -5,15 +5,15 @@ import { useDispatch } from 'react-redux';
 import { deleteLink } from '../actions/index';
 
 const linkStyle = {
-  margin: '10px 10px 10px 2px',
-  height: '24px',
+  margin: '0 10px 0 2px',
   whiteSpace: 'nowrap',
 };
 
 const LinkItem = ({ url, siteName }) => {
-  const faviconStyle = `url(https://www.google.com/s2/favicons?domain=${url})`;
+  const faviconStyle = `url(${url}/favicon.ico)`;
   const deleteOpen = useDeleteLink();
   const dispatch = useDispatch();
+
 
   const removeLink = () => {
     dispatch(deleteLink(siteName));
@@ -38,6 +38,7 @@ const LinkItem = ({ url, siteName }) => {
 
   const renderFavicons = () => {
     return !deleteOpen ? (
+      <>
       <a
         href={url}
         style={{
@@ -46,7 +47,7 @@ const LinkItem = ({ url, siteName }) => {
         }}
       >
         {siteName}
-      </a>
+      </a> </>
     ) : null;
   };
 
