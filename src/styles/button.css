@@ -115,6 +115,9 @@ Toggle DeleteLink Button
   background: none;
   cursor: pointer;
   height: 20px;
+  position: absolute;
+  left: -15px;
+  top: 5px;
 }
 
 /**************************

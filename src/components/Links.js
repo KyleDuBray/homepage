@@ -22,7 +22,7 @@ const Links = () => {
   // OR just add more rows and make horizontal scroll for smaller windows
   // https://stackoverflow.com/questions/56392199/make-a-button-to-scroll-horizontally-in-div
   return (
-    <div className="links-container hidden-vert-scroll">
+    <div className="links-container">
       <DeleteLinkProvider>
         <DeleteLinksToggler />
         {renderLinks()}
