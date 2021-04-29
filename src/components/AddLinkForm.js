@@ -44,6 +44,8 @@ export default function AddLinkForm(props) {
 
   const closeForm = () => {
     dispatch(clearAllErrors());
+    dispatch(updateName(''));
+    dispatch(updateUrl(''));
     props.handleCancel();
   };
 

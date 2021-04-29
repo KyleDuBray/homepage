@@ -25,15 +25,19 @@ const Weather = () => {
     dispatch(fetchLocation());
   }, []);
 
+  const renderWeatherUnits = () => {
+    return !weather ? null : <>&#176;F</>
+  }
+
   console.log(weather);
   return (
     <div className="weather-container">
       <div className="weather-city">
-        <h4>{!weather ? 'Loading...' : weather.name}</h4>
+        <h4>{!weather ? null : weather.name}</h4>
       </div>
       <div className="weather-reporter">
-        <ion-icon name={weatherStyles.sunny}></ion-icon>
-        <h4> {Math.round(parseInt(weather.main?.temp))}&#176;F</h4>
+        <ion-icon name={!weather ? null : weatherStyles.sunny}></ion-icon>
+        <h4> {!weather.main ? null : Math.round(parseInt(weather.main?.temp))}{renderWeatherUnits()}</h4>
       </div>
     </div>
   );
