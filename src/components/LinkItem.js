@@ -1,19 +1,22 @@
-import React from 'react';
-import Button from './Button';
-import { useDeleteLink } from '../contexts/DeleteLinkContext';
-import { useDispatch } from 'react-redux';
-import { deleteLink } from '../actions/index';
+import React from "react";
+import Button from "./Button";
+import { useDeleteLink } from "../contexts/DeleteLinkContext";
+import { useDispatch } from "react-redux";
+import { deleteLink } from "../actions/index";
 
 const linkStyle = {
-  margin: '0 10px 0 2px',
-  whiteSpace: 'nowrap',
+  margin: "0 10px 0 2px",
+  whiteSpace: "nowrap",
+};
+
+const formatUrlForFaviconStyle = (str) => {
+  return str.substring(0, str.indexOf(".com") + 4);
 };
 
 const LinkItem = ({ url, siteName }) => {
-  const faviconStyle = `url(${url}/favicon.ico)`;
+  const faviconStyle = `url(${formatUrlForFaviconStyle(url)}/favicon.ico)`;
   const deleteOpen = useDeleteLink();
   const dispatch = useDispatch();
-
 
   const removeLink = () => {
     dispatch(deleteLink(siteName));
@@ -39,15 +42,16 @@ const LinkItem = ({ url, siteName }) => {
   const renderFavicons = () => {
     return !deleteOpen ? (
       <>
-      <a
-        href={url}
-        style={{
-          backgroundImage: faviconStyle,
-          ...linkStyle,
-        }}
-      >
-        {siteName}
-      </a> </>
+        <a
+          href={url}
+          style={{
+            backgroundImage: faviconStyle,
+            ...linkStyle,
+          }}
+        >
+          {siteName}
+        </a>{" "}
+      </>
     ) : null;
   };
 
