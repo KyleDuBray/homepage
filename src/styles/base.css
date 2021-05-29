@@ -5,9 +5,13 @@
 }
 
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 
   font-size: 62.5%;
+}
+
+h2 {
+  font-weight: 300;
 }
 
 h4 {

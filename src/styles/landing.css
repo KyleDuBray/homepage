@@ -5,7 +5,7 @@
   background-position: center;
   background-size: cover;
   background-image: linear-gradient(to top, #fffdfd00, #ffffffc2),
-    url('/src/img/background.jpg');
+    url("/src/img/background.jpg");
   display: flex;
   flex-direction: column;
   position: relative;
@@ -20,8 +20,9 @@
 }
 
 .main-text {
-  padding-left: 12.5vw;
-  padding-right: 12.5vw;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
   margin-top: 5%;
   display: flex;
   justify-content: space-between;
