@@ -9,7 +9,6 @@ import Weather from './components/Weather';
 import Links from './components/Links';
 import moment from 'moment';
 import Time from './components/Time';
-import { fromAuthCode } from 'snoowrap';
 
 const App = () => {
   // const [fetchedImg, setFetchedImg] = useState('');
@@ -29,9 +28,7 @@ const App = () => {
   const getGreeting = () => {
     '';
     const time = moment().format('LTS');
-    console.log(time);
     const timeOfDay = time.charAt(time.length - 2);
-    console.log(timeOfDay);
     switch (timeOfDay) {
       case 'A':
         return 'Morning';
