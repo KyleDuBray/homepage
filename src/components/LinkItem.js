@@ -42,15 +42,13 @@ const LinkItem = ({ url, siteName }) => {
   const renderFavicons = () => {
     return !deleteOpen ? (
       <>
-        <a
-          href={url}
-          style={{
-            backgroundImage: faviconStyle,
-            ...linkStyle,
-          }}
-        >
+        <a href={url}>
+          <div
+            className="favicon"
+            style={{ backgroundImage: faviconStyle }}
+          ></div>
           {siteName}
-        </a>{" "}
+        </a>
       </>
     ) : null;
   };

@@ -14,7 +14,7 @@ Links
 *************************** */
 
 .links-container {
-  background: linear-gradient(#e6646439, #9198e587);
+  /*background: linear-gradient(#e6646439, #9198e587);*/
   /* height: 46.4px; */
   display: flex;
   flex-wrap: wrap;
@@ -36,22 +36,7 @@ Links
   background-color: rgba(0, 0, 0, 0.151);
 }
 
-/*Use this for hidden scroll functionality- scrapped to just use flex-wrap*/
-/* .hidden-vert-scroll {
-  overflow-x: scroll; /* Add the ability to scroll 
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera 
-.hidden-vert-scroll::-webkit-scrollbar {
-  display: none; 
-} */
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.hidden-vert-scroll {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
+/*  bar style links
 a[href^="http"] {
   display: flex !important;
   flex-direction: column;
@@ -61,6 +46,21 @@ a[href^="http"] {
   background-position: left center;
   height: 44px;
   line-height: 44px;
+} */
+
+a[href^="http"] {
+  display: flex !important;
+  flex-direction: column;
+  padding: 50px;
+  height: 200px;
+}
+
+.favicon {
+  height: 100px;
+  width: 50px;
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+  background-position: left center;
 }
 
 /**************************

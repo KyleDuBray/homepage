@@ -1,14 +1,14 @@
-import './styles/base.css';
-import './styles/landing.css';
-import './styles/widgets.css';
-import React from 'react';
-import unsplash from './apis/unsplash';
+import "./styles/base.css";
+import "./styles/landing.css";
+import "./styles/widgets.css";
+import React from "react";
+import unsplash from "./apis/unsplash";
 
-import { ReactComponent as Logo } from './icons/logo.svg';
-import Weather from './components/Weather';
-import Links from './components/Links';
-import moment from 'moment';
-import Time from './components/Time';
+import { ReactComponent as Logo } from "./icons/logo.svg";
+import Weather from "./components/Weather";
+import Links from "./components/Links";
+import moment from "moment";
+import Time from "./components/Time";
 
 const App = () => {
   // const [fetchedImg, setFetchedImg] = useState('');
@@ -26,16 +26,18 @@ const App = () => {
   //   getImg();
   // }, []);
   const getGreeting = () => {
-    '';
-    const time = moment().format('LTS');
+    "";
+    const time = moment().format("LTS");
     const timeOfDay = time.charAt(time.length - 2);
     switch (timeOfDay) {
-      case 'A':
-        return 'Morning';
-      case 'P':
+      case "A":
+        return "Good Morning";
+      case "P":
         if (time.charAt(0) < 5) {
-          return 'Afternoon';
-        } else return 'Evening';
+          return "Good Afternoon";
+        } else return "Good Evening";
+      default:
+        return null;
     }
   };
 
@@ -49,7 +51,7 @@ const App = () => {
       >
         <Logo className="logo" />
         <div className="main-text">
-          <h1>Good {getGreeting()}</h1>
+          <h1>{getGreeting()}</h1>
           <Weather />
           <Time />
         </div>
