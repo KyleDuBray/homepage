@@ -49,7 +49,7 @@ a[href^="http"] {
 } */
 
 a[href^="http"] {
-  display: flex !important;
+  display: flex;
   flex-direction: column;
   padding: 50px;
   height: 200px;
@@ -57,10 +57,9 @@ a[href^="http"] {
 
 .favicon {
   height: 100px;
-  width: 50px;
-  background-size: 50px 50px;
+  background-size: 24px 24px;
   background-repeat: no-repeat;
-  background-position: left center;
+  background-position: center;
 }
 
 /**************************

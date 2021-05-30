@@ -47,7 +47,7 @@ const LinkItem = ({ url, siteName }) => {
             className="favicon"
             style={{ backgroundImage: faviconStyle }}
           ></div>
-          {siteName}
+          <p>{siteName}</p>
         </a>
       </>
     ) : null;

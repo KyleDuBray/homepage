@@ -44,9 +44,11 @@ button:not(:-moz-focusring):focus > .fix-focus {
 Add Link Button
 *************************** */
 .addlink {
-  height: fit-content;
   margin: 5px 10px;
 }
+
+/*The span MUST have inline-block to set width correctly
+in it's context (currently inherited)*/
 .addlink,
 .add-span {
   border: 0;
