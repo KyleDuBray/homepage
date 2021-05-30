@@ -1,10 +1,12 @@
 .widgets-container {
-  background-color: rgba(189, 189, 189, 0.082);
+  /* background-color: rgba(189, 189, 189, 0.082); */
   width: 75vw;
   height: 75vh;
   margin: 0 auto auto auto;
+  /*
   box-shadow: 0px 5px 10px rgb(20, 20, 20);
   backdrop-filter: blur(10px);
+  */
   display: flex;
   flex-direction: column;
 }
@@ -33,7 +35,10 @@ Links
 }
 
 .link-item:hover {
-  background-color: rgba(0, 0, 0, 0.151);
+  /*background-color: rgba(0, 0, 0, 0.151); */
+  backdrop-filter: blur(3px);
+  box-shadow: 0px 5px 10px rgb(20, 20, 20);
+  background-color: rgba(189, 189, 189, 0.082);
 }
 
 /*  bar style links
