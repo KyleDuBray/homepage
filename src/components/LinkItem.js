@@ -22,6 +22,7 @@ const LinkItem = ({ url, siteName }) => {
     dispatch(deleteLink(siteName));
   };
 
+  // TODO: Now that grid is used for links, need to reposition the toggle delete
   const renderDeleteButtons = () => {
     if (deleteOpen) {
       return (

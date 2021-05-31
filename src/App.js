@@ -25,6 +25,7 @@ const App = () => {
 
   //   getImg();
   // }, []);
+
   const getGreeting = () => {
     "";
     const time = moment().format("LTS");
@@ -33,7 +34,7 @@ const App = () => {
       case "A":
         return "Good Morning";
       case "P":
-        if (time.charAt(0) < 5) {
+        if (parseInt(time.substring(0, 2)) < 5) {
           return "Good Afternoon";
         } else return "Good Evening";
       default:

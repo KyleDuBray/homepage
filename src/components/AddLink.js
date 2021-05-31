@@ -9,9 +9,8 @@ import Button from "./Button";
 const AddLink = () => {
   const toggle = useToggleModal();
 
-  // TODO: Fix button span width(inner) to match button width (outer)
   return (
-    <>
+    <div className="addlink-container">
       <Button
         handleClick={toggle}
         content={"+ New"}
@@ -19,7 +18,7 @@ const AddLink = () => {
         innerClass="add-span"
       />
       <AddLinkModal />
-    </>
+    </div>
   );
 };
 
