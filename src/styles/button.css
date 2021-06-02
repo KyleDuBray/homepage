@@ -103,7 +103,7 @@ Delete Link Button
 }
 
 .deletelink {
-  margin: auto 0;
+  margin: 0;
 }
 
 /**************************
@@ -118,8 +118,7 @@ Toggle DeleteLink Button
   cursor: pointer;
   height: 20px;
   position: absolute;
-  left: -15px;
-  top: 5px;
+  top: 15%;
 }
 
 /**************************

@@ -29,6 +29,7 @@ Links
   grid-auto-rows: min-content;
   justify-items: center;
   align-items: center;
+  justify-content: center;
 }
 
 .links-container * {
@@ -62,7 +63,8 @@ a[href^="http"] {
   line-height: 44px;
 } */
 
-a[href^="http"] {
+a[href^='http'],
+.deletable {
   display: flex;
   flex-direction: column;
   height: 200px;

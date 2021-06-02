@@ -18,9 +18,6 @@ const Links = () => {
     });
   };
 
-  // TODO: Add buttons for horizontal scrolling of div once linksbar is full
-  // OR just add more rows and make horizontal scroll for smaller windows
-  // https://stackoverflow.com/questions/56392199/make-a-button-to-scroll-horizontally-in-div
   return (
     <div className="links-container">
       <DeleteLinkProvider>

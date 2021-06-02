@@ -1,16 +1,16 @@
-import React from "react";
-import Button from "./Button";
-import { useDeleteLink } from "../contexts/DeleteLinkContext";
-import { useDispatch } from "react-redux";
-import { deleteLink } from "../actions/index";
+import React from 'react';
+import Button from './Button';
+import { useDeleteLink } from '../contexts/DeleteLinkContext';
+import { useDispatch } from 'react-redux';
+import { deleteLink } from '../actions/index';
 
 const linkStyle = {
-  margin: "0 10px 0 2px",
-  whiteSpace: "nowrap",
+  margin: '0 10px 0 2px',
+  whiteSpace: 'nowrap',
 };
 
 const formatUrlForFaviconStyle = (str) => {
-  return str.substring(0, str.indexOf(".com") + 4);
+  return str.substring(0, str.indexOf('.com') + 4);
 };
 
 const LinkItem = ({ url, siteName }) => {
@@ -23,26 +23,26 @@ const LinkItem = ({ url, siteName }) => {
   };
 
   // TODO: Now that grid is used for links, need to reposition the toggle delete
-  const renderDeleteButtons = () => {
+  const renderDeleteButton = () => {
     if (deleteOpen) {
       return (
-        <>
+        <div className="deletable">
           <Button
             content={<ion-icon name="close-circle-outline"></ion-icon>}
             innerClass="delete-span"
             outerClass="deletelink"
             handleClick={removeLink}
           />
-          <div style={linkStyle}>{siteName}</div>
-        </>
+          <p>{siteName}</p>
+        </div>
       );
     }
     return null;
   };
 
-  const renderFavicons = () => {
+  const renderFaviconLink = () => {
     return !deleteOpen ? (
-      <>
+      <div className="link-item">
         <a href={url}>
           <div
             className="favicon"
@@ -50,14 +50,14 @@ const LinkItem = ({ url, siteName }) => {
           ></div>
           <p>{siteName}</p>
         </a>
-      </>
+      </div>
     ) : null;
   };
 
   return (
     <>
-      {renderDeleteButtons()}
-      <div className="link-item">{renderFavicons()}</div>
+      {renderDeleteButton()}
+      {renderFaviconLink()}
     </>
   );
 };
