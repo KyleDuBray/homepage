@@ -1,16 +1,11 @@
-import React from 'react';
-import Button from './Button';
-import { useDeleteLink } from '../contexts/DeleteLinkContext';
-import { useDispatch } from 'react-redux';
-import { deleteLink } from '../actions/index';
-
-const linkStyle = {
-  margin: '0 10px 0 2px',
-  whiteSpace: 'nowrap',
-};
+import React from "react";
+import Button from "./Button";
+import { useDeleteLink } from "../contexts/DeleteLinkContext";
+import { useDispatch } from "react-redux";
+import { deleteLink } from "../actions/index";
 
 const formatUrlForFaviconStyle = (str) => {
-  return str.substring(0, str.indexOf('.com') + 4);
+  return str.substring(0, str.indexOf(".com") + 4);
 };
 
 const LinkItem = ({ url, siteName }) => {
