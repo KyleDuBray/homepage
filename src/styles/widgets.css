@@ -16,14 +16,6 @@ Links
 *************************** */
 
 .links-container {
-  /*background: linear-gradient(#e6646439, #9198e587);*/
-  /* height: 46.4px; */
-  /*
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-*/
-
   display: grid;
   grid-template-columns: repeat(6, min-content);
   grid-auto-rows: min-content;

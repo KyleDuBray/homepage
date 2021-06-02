@@ -143,3 +143,12 @@ Form Buttons
   height: 26.4px;
   width: 80px;
 }
+
+@media only screen and (max-width: 620px) {
+  .form-addlink-cancel-btn,
+  .form-addlink-cancel-span,
+  .form-addlink-add-btn,
+  .form-addlink-add-span {
+    width: 100%;
+  }
+}
