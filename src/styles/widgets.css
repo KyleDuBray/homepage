@@ -1,7 +1,7 @@
 .widgets-container {
   /* background-color: rgba(189, 189, 189, 0.082); */
   width: 75vw;
-  height: 75vh;
+  height: auto;
   margin: 0 auto auto auto;
   /*
   box-shadow: 0px 5px 10px rgb(20, 20, 20);
@@ -22,6 +22,8 @@ Links
   justify-items: center;
   align-items: center;
   justify-content: center;
+  height: 75vh;
+  overflow: auto;
 }
 
 .links-container * {
@@ -29,6 +31,9 @@ Links
   text-decoration: none;
   color: black;
   font-size: 2rem;
+}
+
+.links-container > * {
   width: 12.5vw;
 }
 
@@ -55,7 +60,7 @@ a[href^="http"] {
   line-height: 44px;
 } */
 
-a[href^='http'],
+a[href^="http"],
 .deletable {
   display: flex;
   flex-direction: column;
@@ -77,9 +82,35 @@ a[href^='http'],
 }
 
 /**************************
-Reddit Content
+Media Queries
 *************************** */
 
-.reddit-box {
-  height: max-content;
+@media only screen and (max-width: 1500px) {
+  .links-container {
+    grid-template-columns: repeat(5, min-content);
+  }
+}
+
+@media only screen and (max-width: 1160px) {
+  .links-container {
+    grid-template-columns: repeat(4, min-content);
+  }
+}
+
+@media only screen and (max-width: 1128px) {
+  .link-item {
+    width: 141px;
+  }
+}
+
+@media only screen and (max-width: 705px) {
+  .links-container {
+    grid-template-columns: repeat(3, min-content);
+  }
+}
+
+@media only screen and (max-width: 645px) {
+  .links-container {
+    grid-template-columns: 100vw;
+  }
 }

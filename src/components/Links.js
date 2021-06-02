@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
-import LinkItem from './LinkItem';
-import AddLink from './AddLink';
-import DeleteLinksToggler from './DeleteLinksToggler';
+import LinkItem from "./LinkItem";
+import AddLink from "./AddLink";
+import DeleteLinksToggler from "./DeleteLinksToggler";
 
-import { ModalProvider } from '../contexts/ModalContext';
-import { DeleteLinkProvider } from '../contexts/DeleteLinkContext';
+import { ModalProvider } from "../contexts/ModalContext";
+import { DeleteLinkProvider } from "../contexts/DeleteLinkContext";
 
 const Links = () => {
   const state = useSelector((state) => state.links);
