@@ -27,14 +27,14 @@ const App = () => {
   // }, []);
 
   const getGreeting = () => {
-    "";
     const time = moment().format("LTS");
     const timeOfDay = time.charAt(time.length - 2);
     switch (timeOfDay) {
       case "A":
         return "Good Morning";
       case "P":
-        if (parseInt(time.substring(0, 2)) < 5) {
+        const hour = parseInt(time.substring(0, 2));
+        if (hour < 5 || hour === 12) {
           return "Good Afternoon";
         } else return "Good Evening";
       default:
