@@ -60,7 +60,7 @@ a[href^="http"] {
   line-height: 44px;
 } */
 
-a[href^="http"],
+a[href^='http'],
 .deletable {
   display: flex;
   flex-direction: column;
